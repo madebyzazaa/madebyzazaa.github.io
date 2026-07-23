@@ -1,0 +1,334 @@
+/* ==========================================================================
+   FRESH UNIVERSE — PERKS PAGE (LIGHT THEME)
+   ========================================================================== */
+
+/* 1. RESET & BASE CONFIGURATION */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: #f5f4f4;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #f5f4f4;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* ==========================================================================
+   2. NAVIGATION BAR
+   ========================================================================== */
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(28, 28, 31, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 min(4vw, 40px);
+  z-index: 1000;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fresh-logo {
+  width: 34px;
+  height: auto;
+}
+
+.brand-txt {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.nav {
+  justify-self: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.navigation-href-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-href {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.2s ease;
+}
+
+.navigation-href:hover {
+  color: #ffffff;
+}
+
+.shopify-link {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.shopify-link:hover {
+  background: #ffffff;
+}
+
+.shopify-link-img {
+  width: 18px;
+  filter: invert(1);
+  transition: filter 0.3s ease;
+}
+
+.shopify-link:hover .shopify-link-img {
+  filter: invert(0);
+}
+
+@media (max-width: 768px) {
+  .brand-txt { display: none; }
+  .navigation-href { font-size: 0.65rem; letter-spacing: 1px; }
+}
+@media (max-width: 450px) {
+.navigation-href{font-size: 10px;}
+.navigation-href-list{gap: 7px;}
+}
+@media (max-width: 310px) {
+.shopify-link{display: none;}
+.navigation-bar{padding-right: 20px;}
+}
+/* ==========================================================================
+   3. SECTION 1: AVAILABLE PERKS (CARDS GRID)
+   ========================================================================== */
+.section1 {
+  margin-top: 110px;
+  width: 100%;
+  padding: 0 min(4vw, 40px);
+}
+
+.header {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  text-align: center;
+  color: #111111;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.grid {
+  width: min(1300px, 100%);
+  margin: 0 auto 80px auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.perk {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perk:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.perk-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 800;
+  width: 100%;
+  color: #111111;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+}
+
+.perk-icon {
+  width: 72px;
+  height: auto;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.perk-description {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.sign-up {
+  width: 100%;
+  max-width: 240px;
+  height: 48px;
+  border: none;
+  background-color: #111111;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sign-up:hover {
+  background-color: #333333;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ==========================================================================
+   4. SECTION 2: INCENTIVE NETWORK CAMPAIGN HERO
+   ========================================================================== */
+.section2 {
+  position: relative;
+  width: min(1300px, 92%);
+  margin: 0 auto 100px auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #111111;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.background {
+  width: 100%;
+  max-height: 550px;
+  object-fit: cover;
+  filter: brightness(0.65) contrast(1.05);
+}
+
+.perk-info-header {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  right: 6%;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.perk-info-txt {
+  position: absolute;
+  bottom: 8%;
+  left: 6%;
+  width: min(650px, 88%);
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  font-family: 'inter', sans-serif;
+  line-height: 1.7;
+  background-color: rgba(18, 18, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 24px 30px;
+  border-radius: 12px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 2;
+  height: 60%;
+  width: 60%;
+}
+
+@media (max-width: 900px) {
+  .section2 {
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+  }
+  .background {
+    height: 300px;
+  }
+  .perk-info-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    padding: 30px 24px 10px 24px;
+    font-size: 1.8rem;
+  }
+  .perk-info-txt {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    backdrop-filter: none;
+    padding: 0 24px 30px 24px;
+    font-size: 0.8rem;
+    color: #e0e0e0;
+  }
+}

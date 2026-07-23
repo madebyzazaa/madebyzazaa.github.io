@@ -1,0 +1,33 @@
+{
+  "name": "fresh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devrun": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.1",
+    "bcrypt": "^6.0.0",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "jshint": "^0.5.9",
+    "multer": "^2.2.0",
+    "ngrok": "^5.0.0-beta.2",
+    "nodemailer": "^9.0.3",
+    "nodemon": "^3.1.14",
+    "resend": "^6.17.2",
+    "session-file-store": "^1.5.0"
+  }
+}

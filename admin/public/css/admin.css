@@ -1,0 +1,875 @@
+.navigation{
+width: 70%;
+height: 50px;
+border-radius: 25px;
+background-color: #161616;
+position: absolute;
+top: 50px;
+transform: translate(-50%, -50%);
+left: 50%;
+display: flex;
+padding-right: 5px;
+align-items: center;
+justify-content: center;
+padding-left: 10px;
+}
+.logo{
+width: 45px;
+height: 45px;
+margin-right: auto;
+}
+.href{
+color: white;
+font-family: sans-serif;
+font-size: 15px;
+}
+.box{
+width: 20%;
+background-color: white;
+border-radius: 25px;
+height: 40px;
+padding-left: 10px;
+margin-left: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.nav{
+width: 30%;
+min-width: 200px;
+display: flex;
+justify-content: space-between;
+}
+@media (max-width: 550px) {
+.navigation{
+width: 90%;
+}    
+.href{
+font-size: 13px;
+}
+.nav{
+min-width: 180px;
+}
+}
+@media (max-width: 350px) {
+.box{
+display: none;
+}
+.href{
+font-size: 13px;
+}
+.nav{
+min-width: 160px;
+}
+.navigation{
+padding-right: 30px;
+width: 85%;
+}
+}
+.products{
+margin-top: 100px;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.table-container {
+    width: 80%;
+    max-height: 400px;        
+    margin: 2rem auto;       
+    overflow-y: auto;         
+    overflow-x: auto;         
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2a2a2a;
+}
+
+/* 2. The Base Table Setup */
+.product-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes weird double borders between cells */
+    text-align: left;
+    font-family: 'Inter', sans-serif; /* Clean developer-friendly font */
+    color: #e0e0e0;
+}
+
+/* 3. Pinned (Sticky) Header */
+.table-head th {
+    position: sticky;          /* Keeps headers locked at the top while scrolling */
+    top: 0;
+    background-color: #1e1e1e; /* Solid color so table rows don't bleed under it */
+    color: #888888;            /* Dimmed, professional looking headers */
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 14px 16px;
+    border-bottom: 2px solid #2a2a2a;
+}
+
+/* 4. Table Row & Cell Styles */
+.product-info td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #222222;
+    vertical-align: middle;
+}
+
+/* Alternating row colors (Zebra striping) for readability */
+.product-info{
+    background-color: #161616;
+}
+
+/* Row hover highlight */
+.product-info:hover {
+    background-color: #1a1a1a;
+}
+
+/* 5. Product Image Handler */
+.product-img {
+    width: 50px;               /* Keeps images from blowing up the table layout */
+    height: 50px;
+    object-fit: cover;         /* Crops image perfectly into the square */
+    border-radius: 6px;
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+}
+
+/* 6. Clean Typography for Cells */
+.product-info p {
+    margin: 0;                 /* Strips default paragraph margins */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 7. Sleek Remove Button */
+.remove {
+    background-color: #3a1a1a; /* Subtle dark red */
+    color: #ff6b6b;            /* Warm alert red */
+    border: 1px solid #662222;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.remove:hover {
+    background-color: #cc3333;
+    color: #ffffff;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 8px rgba(204, 51, 51, 0.4);
+}
+.product-des{
+max-width: 300px;
+min-width: 150px;
+}
+@media (max-width: 600px) {
+.table-container{
+width: 95%;
+
+}
+}
+h1{
+font-size: clamp(1.8rem, 4vw, 4rem);
+text-transform: uppercase;
+font-family: sans-serif;
+text-align: center;
+}
+
+.product-card {width: 300px;
+  background: transparent;
+  /*border: 1px solid #707070;*/
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  /* Brutalist hard-edged shadow (no blur) */
+  transition: tra
+  nsform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Cyber pop reaction when hovering over a card */
+.product-card:hover {
+animation-name: raise;
+animation-duration: 0.7s;
+animation-timing-function: ease-out;
+margin-top: -10px;
+}
+@keyframes raise {
+0%{
+margin-top: 0px;
+}
+100%{
+margin-top: -10px;
+}
+}
+
+/* 3. THE TOP META HEADER */
+.product-meta-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #555555;
+}
+body{background-color: rgb(248, 248, 248);}
+.asset-tag {
+  color: #ff0055; /* Hot pink/neon red accent for the file type tag */
+}
+
+/* 4. THE IMAGE FIXER CONTAINER */
+.product-image-wrapper {
+  width: 90%;
+  /* 🎯 FORCES every box to be a perfect square, regardless of the raw image size */
+  aspect-ratio: 1 / 1; 
+  background-color: #f0f0f0; /* Light industrial gray backdrop */
+  border: 1px solid #646464;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px; /* Prevents edge-to-edge text sheet images from touching the inner border */
+}
+
+/* 5. THE STRIPPED IMAGE CONTROLS */
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  /* 🛡️ THE LIFESAVER: Centers mockups, stops stretching, and fits the full tech sheets inside the box */
+  object-fit: contain; 
+}
+
+/* 6. THE FILLER SPEC TEXT */
+.product-spec-text {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777777;
+  line-height: 1.5;
+  margin: 14px 0;
+  border-left: 2px solid #000000;
+  padding-left: 8px;
+}
+
+/* 7. THE SHOP NOW CALL-TO-ACTION */
+.shop-btn {
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+height: 40px;
+border-radius: 7px;
+border: 0;
+background-color: rgb(46, 46, 46);
+color: white;
+}
+
+.shop-btn:hover {
+  background: #474747; /* Switches button to neon green on hover */
+  color: #f7f7f7;
+}
+.product-url{
+margin-top: 20px;
+width: 80%;
+height: 25px;
+border-radius: 10px 0px 10px 10px;
+border: 1px solid grey;
+}
+.add{
+width: 100%;
+margin-top: 140px;
+}
+.add-container{
+display: grid;
+grid-template-columns: 1fr 1fr;    
+}
+.right{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* 1. Form Container Setup */
+.upload {
+    width: 80%;
+    max-width: 450px;          /* Prevents the form from stretching too wide */
+    margin: 2rem auto;         /* Centers the form on the page */
+    padding: 2.5rem;
+    background: #121212;       /* Matching dark background */
+    border: 1px solid #2a2a2a; /* Clean subtle border */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;    /* Stack everything vertically */
+}
+
+/* 2. Form Title */
+.upload h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 0.75rem;
+}
+
+/* 3. Label Styles */
+.upload label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888888;            /* Accent dim text */
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;          /* Space out labels */
+}
+
+/* 4. Text Input & Textarea Styles */
+.upload input[type="text"],
+.upload textarea {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+/* Give textareas some room to breathe */
+.upload textarea {
+    min-height: 100px;
+    resize: vertical;          /* Allows vertical resize only */
+}
+
+/* Focus States (The Glow Effect when typing) */
+.upload input[type="text"]:focus,
+.upload textarea:focus {
+    border-color: #555555;     /* Slightly brighter border */
+    background-color: #202020;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Input Placeholders */
+.upload input::placeholder,
+.upload textarea::placeholder {
+    color: #555555;
+}
+
+/* 5. Custom File Input Styling */
+.upload input[type="file"] {
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: #888888;
+}
+
+/* Customizing the "Choose File" button inside browser file input */
+.upload input[type="file"]::file-selector-button {
+    background-color: #222222;
+    color: #e0e0e0;
+    border: 1px solid #444444;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.upload input[type="file"]::file-selector-button:hover {
+    background-color: #333333;
+    border-color: #555555;
+    color: #ffffff;
+}
+
+/* 6. Clean, Sleek Save Button */
+.uploadsave {
+    background-color: #ffffff;  /* Premium solid white button */
+    color: #000000;
+    border: none;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 1rem;
+}
+
+.uploadsave:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px); /* Micro-lift interaction */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+.left{
+display: flex;
+align-items: center;
+}
+.uploadsave:active {
+    transform: translateY(0);
+}
+@media (max-width: 700px) {
+.add-container{
+grid-template-columns: 1fr;
+grid-template-rows: 1fr 1fr;
+}
+}
+@media (max-width: 350px) {
+.product-card{
+width: 250px;
+}
+
+}
+
+/* 1. Main Section Wrapper (Force Vertical Stacking) */
+.log {
+    width: 100%;       /* Prevents it from stretching too wide on massive screens */
+    margin: 2rem auto;         /* Centers the section on your page */
+    display: flex;
+    flex-direction: column;    /* Forces form to stay under the table */
+    gap: 2.5rem;               /* Perfect breathing room between table and form */
+    font-family: 'Inter', sans-serif;
+    margin-top: 140px;
+    align-items: center;
+}
+
+
+
+/* 2. Simple Bordered Table (No Backgrounds) */
+.report-table-container{
+width: 75%;
+overflow-y: scroll;
+overflow-x: scroll;
+height: 300px;
+}
+.log table {
+    width: 100%;
+    border-collapse: collapse; /* Collapses borders into a single clean line */
+    background: transparent;   /* No background color */
+    color: #0a0a0a;
+}
+
+/* Black borders on table, headers, and cells */
+.log table, 
+.log th, 
+.log td {
+    border: 1px solid #000000; /* Sharp black borders demarcating rows & columns */
+}
+
+/* Table Header Formatting */
+.log th {
+    position: sticky;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: #4d4d4d;
+}
+
+/* Table Body Cell Formatting */
+.log td {
+    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+.log td p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Specific styling for report columns */
+.report-email {
+    font-weight: 300;
+}
+
+.report-des {
+    color: #2b2b2b;
+}
+
+.report-date {
+    color: #666666;
+    font-family: monospace;    /* Keeps date numbers perfectly aligned */
+}
+
+@media (max-width: 400px) {
+.report-table-container{
+width: 85%;
+}
+}
+/* 3. Dark "Compose Email" Form Container (Sits underneath) */
+.compose-email {
+    width: 70%;
+    background-color: #121212; /* Dark theme container */
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.compose-email h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #2a2a2a;
+    padding-bottom: 0.5rem;
+}
+
+.compose-email form {
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-email label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888888;
+    margin-bottom: 0.5rem;
+}
+
+/* Textarea Input styling */
+.compose-email textarea {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    min-height: 120px;
+    resize: vertical;          /* Prevent breaking layout horizontally */
+    outline: none;
+    transition: all 0.25s ease;
+    margin-bottom: 1.5rem;
+}
+
+.compose-email textarea:focus {
+    border-color: #555555;
+    background-color: #202020;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Premium Solid White Submit Button */
+.compose-email button[type="submit"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    align-self: flex-start;    /* Prevents the button from stretching full-width */
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.compose-email button[type="submit"]:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.compose-email button[type="submit"]:active {
+    transform: translateY(0);
+}
+.box2{
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+.frame{
+border: 1px solid white;
+justify-self: center;
+height: 300px;
+width: 80%;
+min-width: 250px;
+}
+@media (max-width: 800px) {
+.box2{
+grid-template-columns: 1fr;
+grid-template-rows: 1fr 1fr;
+}
+}
+
+/* 1. Main Drop Section Wrapper (Responsive Grid) */
+.drop-section {
+    width: 80%;
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Left panel slightly smaller than the form panel */
+    gap: 3rem;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+}
+
+/* 2. Left Side: Active Drop Display */
+.drop-display {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.drop-display h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+/* The Countdown Timer Card */
+.timer-box {
+    background-color: #121212;
+    border: 1px solid #222222;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.timer-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #ff3333; /* Streetwear hot-red accent */
+    margin-bottom: 0.5rem;
+}
+
+.countdown-clock {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: monospace; /* Keeps characters stable */
+    letter-spacing: 0.05em;
+}
+
+/* The Live Product Card */
+.live-card {
+    background-color: #121212;
+    border: 1px solid #222222;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.live-card:hover {
+    transform: translateY(-4px);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 320px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.live-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.live-meta {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.live-name {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.live-badge {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+}
+
+
+/* ==========================================
+   3. Right Side: Update Settings Form
+   ========================================== */
+.drop-update {
+    background-color: #121212;
+    border: 1px solid #222222;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.drop-update h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #222222;
+    padding-bottom: 0.75rem;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888888;
+}
+
+/* Inputs & Form Controls styling */
+.update-form input[type="text"],
+.update-form input[type="datetime-local"] {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.update-form input:focus {
+    border-color: #555555;
+    background-color: #202020;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Dark file input matching previous dashboard style */
+.update-form input[type="file"] {
+    font-size: 0.85rem;
+    color: #888888;
+    margin-top: 0.25rem;
+}
+
+.update-form input[type="file"]::file-selector-button {
+    background-color: #222222;
+    color: #e0e0e0;
+    border: 1px solid #444444;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.update-form input[type="file"]::file-selector-button:hover {
+    background-color: #333333;
+    border-color: #555555;
+    color: #ffffff;
+}
+
+/* ==========================================
+   4. Specs Box & Nested Grid
+   ========================================== */
+.specs-box {
+    margin-top: 0.75rem;
+    border-top: 1px solid #222222;
+    padding-top: 1.5rem;
+}
+
+.specs-box h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888888;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+/* Split the individual specs into a grid inside the form */
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns side-by-side */
+    gap: 1.25rem;
+}
+
+/* Prevent inputs from overflowing inside the specs grid */
+.specs-grid .form-group {
+    width: 100%;
+}
+
+/* ==========================================
+   5. Save/Publish Button
+   ========================================== */
+.save-drop-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 14px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 1rem;
+}
+
+.save-drop-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.save-drop-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   6. Mobile Responsiveness
+   ========================================== */
+@media (max-width: 900px) {
+    .drop-section {
+        grid-template-columns: 1fr; /* Stack vertically on smaller tablets/mobile screens */
+        width: 90%;
+        gap: 2.5rem;
+    }
+    
+    .img-wrapper {
+        height: 250px;
+    }
+    
+    .specs-grid {
+        grid-template-columns: 1fr; /* Stack specs inputs vertically on mobile */
+    }
+}

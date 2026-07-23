@@ -1,0 +1,385 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+background-color: rgb(245, 244, 244);
+margin: 0;
+  overflow-x: hidden;
+}
+.navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(28, 28, 31, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 min(4vw, 40px);
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.fresh-logo {
+  width: 32px;
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-box:hover .fresh-logo {
+  transform: rotate(180deg);
+}
+
+.brand-txt {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-href-list {
+  display: flex;
+  list-style: none;
+  gap: min(3vw, 32px);
+}
+
+.navigation-href {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.navigation-href:hover {
+  color: #ffffff;
+}
+
+.shopify-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+
+}
+
+.shopify-link:hover {
+  background: #ffffff;
+}
+
+.shopify-link-img {
+  width: 18px;
+  filter: invert(1);
+  transition: filter 0.3s ease;
+}
+
+.shopify-link:hover .shopify-link-img {
+  filter: invert(0);
+}
+
+/* Navbar Responsiveness */
+@media (max-width: 768px) {
+  .brand-txt { display: none; }
+  .navigation-href { font-size: 0.65rem; letter-spacing: 1px; }
+  .navigation-href-list { gap: 16px; }
+}
+@media (max-width: 450px) {
+.navigation-href{font-size: 10px;}
+.navigation-href-list{gap: 7px;}
+}
+@media (max-width: 310px) {
+.shopify-link{display: none;}
+.navigation-bar{padding-right: 20px;}
+}
+.head{
+width: 100%;
+height: 300px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-bottom: 30px;
+background-color: #f0f0f0;
+background-image: url(/images/fresh-universe-tenski-save-me-isi-agu-split-crop-top.webp);
+}
+.search{
+backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+width: 40%;
+border-radius: 20px;
+height: 50px;
+background-color: rgb(255, 255, 255, 0.6);
+border: 0;
+border: 1px solid rgba(194, 194, 194, 0.548);
+padding-left: 20px;
+
+min-width: 290px;}
+.h1{color: rgb(255, 255, 255, 0.7);
+text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+font-size: clamp(1.8rem, 4.5vw, 5rem);
+font-family: 'inter', sans-serif;
+}
+.tee-name{
+font-family: sans-serif;
+}
+.txt{
+font-family: monospace;
+}
+
+.grid {
+  display: grid;
+  /* Automatically fits as many cards per row as possible, minimum 280px wide */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace; /* Keeps typography raw and industrial */
+}
+
+/* 2. THE PRODUCT CARD MODULE */
+.product-card {white-space: pre-line;
+  background: transparent;
+  /*border: 1px solid #707070;*/
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  /* Brutalist hard-edged shadow (no blur) */
+  transition: tra
+  nsform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Cyber pop reaction when hovering over a card */
+.product-card:hover {
+animation-name: raise;
+animation-duration: 0.7s;
+animation-timing-function: ease-out;
+margin-top: -10px;
+}
+@keyframes raise {
+0%{
+margin-top: 0px;
+}
+100%{
+margin-top: -10px;
+}
+}
+
+/* 3. THE TOP META HEADER */
+.product-meta-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #555555;
+}
+body{background-color: rgb(248, 248, 248);}
+.asset-tag {
+  color: #ff0055; /* Hot pink/neon red accent for the file type tag */
+}
+
+/* 4. THE IMAGE FIXER CONTAINER */
+.product-image-wrapper {
+  width: 100%;
+  /* 🎯 FORCES every box to be a perfect square, regardless of the raw image size */
+  aspect-ratio: 1 / 1; 
+  background-color: #f0f0f0; /* Light industrial gray backdrop */
+  border: 1px solid #646464;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px; /* Prevents edge-to-edge text sheet images from touching the inner border */
+}
+
+/* 5. THE STRIPPED IMAGE CONTROLS */
+.product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  /* 🛡️ THE LIFESAVER: Centers mockups, stops stretching, and fits the full tech sheets inside the box */
+  object-fit: contain; 
+}
+
+/* 6. THE FILLER SPEC TEXT */
+.product-spec-text {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #777777;
+  line-height: 1.5;
+  margin: 14px 0;
+  border-left: 2px solid #000000;
+  padding-left: 8px;
+}
+
+/* 7. THE SHOP NOW CALL-TO-ACTION */
+.shop-btn {
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+height: 40px;
+border-radius: 7px;
+border: 0;
+background-color: rgb(46, 46, 46);
+color: white;
+}
+
+.shop-btn:hover {
+  background: #474747; /* Switches button to neon green on hover */
+  color: #f7f7f7;
+}
+
+/* ==========================================================
+   COLLAPSIBLE ACCORDION HANDBOOK STYLING (.guideline-body)
+   ========================================================== */
+
+.guideline-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tab Dashboard Main Title */
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+/* Individual Content Category Rows */
+.guideline-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Section Header styling */
+.section-title {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+    margin-bottom: 0.25rem;
+}
+
+/* Container bundling stacked question blocks */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* --- Native HTML Details Card Style --- */
+.faq-block {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Subtle accent focus highlight when a marketer opens a specific card */
+.faq-block[open] {
+    border-color: var(--accent);
+}
+
+/* --- Native HTML Summary Question Style --- */
+.faq-question {
+    padding: 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none; /* Empties default native arrow toggle on Chrome/Firefox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+/* Cross-browser default arrow killer tag rule for Safari */
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+/* Adds a clean, pure CSS custom sliding arrow symbol indicator indicator */
+.faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+/* Rotates indicator dynamically when parent card state shifts to open */
+.faq-block[open] .faq-question::after {
+    transform: rotate(45deg);
+    color: var(--accent);
+}
+
+/* --- Expanded Answer Text Wrapper Section --- */
+.faq-answer {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    border-top: 1px solid transparent;
+}
+
+/* Inject divider line when details expand */
+.faq-block[open] .faq-answer {
+    border-top-color: var(--bg-main);
+    padding-top: 1rem;
+}
+
+/* Bullet styling elements nested within collapsible cards */
+.faq-answer ul {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.faq-answer li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Custom Warning Highlight tag for Banking disclaimer card */
+.alert-txt {
+    color: #d32f2f;
+    font-weight: 800;
+}

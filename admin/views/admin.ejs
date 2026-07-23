@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin portal</title>
+    <link rel="stylesheet" href="css/admin3.css">
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <img class="logo" src="images/fresh-universe-globe-logo.png" alt="">
+            <div class="nav">
+            <p class="href">products</p>
+            <p class="href">create</p>
+            <p class="href">log</p>
+            <p class="href">drop</p>
+            </div>
+            <div class="box">
+                <p class="user"><%=username%></p>
+            </div>
+        </div>
+    </header>
+    <div>
+        <main>
+            <section class="products">
+                <h1>available products</h1>
+                <div class="table-container">
+                    <table id="product-table" class="product-table">
+                        <tr class="table-head">
+                            <th>image</th>
+                            <th>description</th>
+                            <th>name</th>
+                            <th>traffic</th>
+                            <th>edit</th>
+                        </tr>
+
+                        
+                        
+                    </table>
+                </div>
+            </section>
+            <section class="add">
+                <h1>create product</h1>
+                <div class="add-container">
+                <div class="left">
+                    <form action="/admin/upload" method="post" class="upload">
+                        <h2>add product</h2>
+                        <label for="uploadname">product name</label>
+                        <input type="text" name="uploadname" id="uploadname" placeholder="product name" required>
+                        <label for="uploaddes">description</label>
+                        <textarea name="uploaddes" id="uploaddes" placeholder="product description" required>DROP:  &#10FIT: &#10TEXTURE: </textarea>
+                        <input type="file" name="uploadimg" id="uploadimg" required>
+                        <button id="uploadsave" class="uploadsave">save</button>
+                    </form>
+                </div>
+                <div class="right">
+                    <div class="product-card">
+                        <div class="product-meta-header">
+                            <span>Drop 00</span>
+                            <span id="render-name">product name</span>
+                        </div>
+                        <div class="product-image-wrapper">
+                            <img id="render-img" src="images/upload.jpg" class="product-image-wrapper-img" alt="">
+                        </div>
+                        <p id="render-des" class="product-spec-text">
+                            DROP: 000 // <br>FIT: <br>template                           
+                        </p>
+                        <button class="shop-btn">shop now</button>
+                        <input class="product-url" type="text" value="https://freshuniverseworld.myshopify.com">
+                    </div>
+                </div>
+                </div>
+            </section>
+            <section class="log">
+                <h1>report</h1>
+                <div class="report-table-container">
+                    <table id="email-table">
+                        <tr>
+                            <th>email</th>
+                            <th>description</th>
+                            <th>date</th>
+                        </tr>
+                        <tr>
+                            <td><p class="report-email">total emails: 100</p></td>
+                            <td><p class="report-des">20: drops 30: new</p></td>
+                            <td><p class="report-date">20/06/2020</p></td>
+                        </tr>
+
+                    </table>
+                </div>
+              
+<div class="email-selection">
+    <h2>Target Audience</h2>
+    
+    <div class="selection-controls">
+        <div class="filter-buttons">
+            <button type="button" class="select-btn" id="btn-new-drop">New Drop</button>
+            <button type="button" class="select-btn" id="btn-all-email">All Email</button>
+            <button type="button" class="select-btn" id="btn-recent-email">Recent Email</button>
+        </div>
+        
+        <div class="custom-input-group">
+            <label for="custom-target">Custom Destination</label>
+            <input type="text" id="custom-target" placeholder="Enter dynamic email address...">
+        </div>
+    </div>
+
+  
+    <h3 id="active-target-display">Selected: <span id="active-option">select a category</span></h3>
+</div>
+                    <div class="compose-email">
+                        <h2>compose email</h2>
+                        <div class="box2">
+                        
+                        <form id="send-email" >
+                            <input type="text" id="subject" name="subject" placeholder="email subject">
+                            <label for="emailcontent">script</label>
+                            <textarea name="emailcontent" id="emailcontent"></textarea>
+                            <button id="send-email-btn" type="submit">send</button>
+                        </form>
+                        <iframe src="" class="frame" id="frame" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </section>
+            <h1 style="margin-top: 250px;">customize drop</h1>
+            <section class="drop-section">
+    <div class="drop-display">
+        <h1>Active Drop</h1>
+        
+        <div class="timer-box">
+            <span class="timer-label">NEXT DROP IN</span>
+            <div id="countdown" class="countdown-clock">02d : 14h : 45m : 08s</div>
+        </div>
+
+        <div class="live-card">
+            <div class="img-wrapper">
+                <img id="drop-img" class="live-img" src="images/catalog/fresh-universe-oversized-heavyweight-streetwear-tee-01.png" alt="Current Drop">
+            </div>
+            <div class="live-meta">
+                <h2 id="drop-name" class="live-name">Tenski Tee</h2>
+                <span id="remove-drop" class="live-badge">END ACTIVE DROP</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="drop-update">
+        <h2>Update Drop Settings</h2>
+        
+        <form id="update-form" class="update-form">
+            <div class="form-group">
+                <label for="timer-input">Target Launch Date & Time</label>
+                <input type="datetime-local" id="timer-input" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name-input">Product Name</label>
+                <input type="text" id="name-input" placeholder="e.g., Tenski Tee" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image-input">Upload Drop Image</label>
+                <input type="file" id="image-input" required>
+            </div>
+
+            <div class="specs-box">
+                <h3>Specs & Details</h3>
+                <div class="specs-grid">
+                    <div class="form-group">
+                        <label for="spec-item">Item</label>
+                        <input type="text" id="spec-item" placeholder="e.g., Tee" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-build">Build</label>
+                        <input type="text" id="spec-build" placeholder="e.g., 280GSM Cotton" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-graphic">Graphic</label>
+                        <input type="text" id="spec-graphic" placeholder="e.g., High-Density Screenprint" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-fit">Fit</label>
+                        <input type="text" id="spec-fit" placeholder="e.g., Boxy Oversized" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-scarcity">Scarcity</label>
+                        <input type="text" id="spec-scarcity" placeholder="e.g., 50 Pcs Worldwide" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="drop-save-btn" class="save-drop-btn">Save & Publish Drop</button>
+        </form>
+    </div>
+
+</section>
+        </main>
+    </div>
+</body>
+<script src="js/admin.js"></script>
+<script src="js/drop.js"></script>
+<script src="js/email.js"></script>
+<script src="js/product.js"></script>
+<script src="js/upload.js"></script>
+
+</html>
+

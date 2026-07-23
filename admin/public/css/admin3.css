@@ -1,0 +1,1095 @@
+/* ==========================================================================
+   1. GLOBAL REBOOT & LIGHT THEME UNIFICATION
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Premium physical paper white background with high-contrast text */
+body {
+    background-color: #f9f9f9;
+    color: #111111;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    padding-bottom: 5rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* High-contrast bold headings */
+h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   2. DASHBOARD NAVIGATION BAR (Sleek Frosted Glass-Morphism)
+   ========================================================================== */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    padding: 0 1rem;
+}
+
+.navigation {
+    width: 100%;
+    max-width: 900px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    /* Keeps logo visible if it has a dark/light contrast balance */
+    filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.1)); 
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.href {
+    color: #666666;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.href:hover {
+    color: #000000;
+    transform: translateY(-1px);
+}
+
+/* Active User Pill (Inverse Contrast) */
+.box {
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 20px;
+    height: 36px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   3. SECTION LAYOUT CONSTRAINTS
+   ========================================================================== */
+main > section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 6rem auto 0 auto;
+    padding-top: 2rem;
+}
+
+/* ==========================================================================
+   4. PRODUCTS MODULE (Available Products Table)
+   ========================================================================== */
+.products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-container {
+    width: 100%;
+    max-height: 400px;        
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow-y: auto;         
+    overflow-x: auto;         
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    color: #111111;
+}
+
+.table-head th {
+    position: sticky;          
+    top: 0;
+    background-color: #f0f0f0; 
+    color: #555555;            
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 16px;
+    border-bottom: 2px solid #e5e5e5;
+    z-index: 10;
+}
+
+.product-info {
+    background-color: #ffffff;
+    transition: background-color 0.2s ease;
+}
+
+.product-info:hover {
+    background-color: #f9f9f9;
+}
+
+.product-info td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.product-img {
+    width: 48px;               
+    height: 48px;
+    object-fit: cover;         
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    border: 1px solid #e5e5e5;
+}
+
+.product-info p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.product-des {
+    max-width: 300px;
+    min-width: 180px;
+    color: #666666;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Alert Red Soft Pill Button */
+.remove {
+    background-color: #fff1f1; 
+    color: #df2c2c;            
+    border: 1px solid #f8cbcb;
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.remove:hover {
+    background-color: #df2c2c;
+    color: #ffffff;
+    border-color: #df2c2c;
+    box-shadow: 0 0 12px rgba(223, 44, 44, 0.2);
+}
+
+/* ==========================================================================
+   5. CREATIVE WORKSPACE (Add Product & Card Preview)
+   ========================================================================== */
+.add-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;    
+    gap: 3rem;
+    align-items: start;
+}
+
+.left {
+    width: 100%;
+}
+
+.upload {
+    width: 100%;
+    background: #ffffff;       
+    border: 1px solid #e5e5e5; 
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;    
+}
+
+.upload h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.75rem;
+}
+
+.upload label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666666;            
+    margin-bottom: 0.5rem;
+    margin-top: 1.25rem;          
+}
+
+.upload input[type="text"],
+.upload textarea {
+    background-color: #fdfdfd;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #111111;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.upload textarea {
+    min-height: 120px;
+    resize: vertical;          
+}
+
+.upload input[type="text"]:focus,
+.upload textarea:focus {
+    border-color: #111111;     
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.upload input::placeholder,
+.upload textarea::placeholder {
+    color: #b3b3b3;
+}
+
+/* File Input Light Mode Customizer */
+.upload input[type="file"] {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+.upload input[type="file"]::file-selector-button {
+    background-color: #f0f0f0;
+    color: #111111;
+    border: 1px solid #dcdcdc;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+}
+
+.upload input[type="file"]::file-selector-button:hover {
+    background-color: #e5e5e5;
+    border-color: #b3b3b3;
+}
+
+/* Brutalist Solid Black Action Button */
+.uploadsave {
+    background-color: #000000;  
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.uploadsave:hover {
+    background-color: #222222;
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Design Card Light Showcase */
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px dashed #dcdcdc;
+    border-radius: 16px;
+    padding: 2rem;
+    align-self: stretch;
+}
+
+.product-card {
+    white-space: pre-line;
+    width: 100%;
+    max-width: 320px;
+    background: #fdfdfd;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.product-meta-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    color: #888888;
+}
+
+.asset-tag {
+    color: #ff0055; 
+}
+
+.product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    background-color: #f5f5f5; 
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 12px; 
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.product-spec-text {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555555;
+    line-height: 1.6;
+    margin: 16px 0;
+    border-left: 2px solid #000000;
+    padding-left: 10px;
+}
+
+.shop-btn {
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.shop-btn:hover {
+    background: #222222;
+    transform: scale(1.02);
+}
+
+.product-url {
+    margin-top: 14px;
+    width: 100%;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    background-color: #f9f9f9;
+    color: #888888;
+    padding: 0 12px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+    text-align: center;
+}
+
+/* ==========================================================================
+   6. COURIER LOGS (Reports & Mail Composer)
+   ========================================================================== */
+.log {
+    width: 100%;
+    margin: 6rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+.report-table-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 280px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.log table {
+    width: 100%;
+    border-collapse: collapse; 
+    background: transparent;   
+    color: #111111;
+}
+
+.log table, 
+.log th, 
+.log td {cursor: pointer;
+    border: 1px solid #f0f0f0; 
+}
+
+
+.log th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #555555;
+    border-bottom: 2px solid #e5e5e5;
+    z-index: 5;
+}
+
+.log td {
+    padding: 14px 16px;
+    vertical-align: middle;
+}
+
+.log td p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.report-email {
+    font-weight: 700;
+    color: #000000;
+}
+
+.report-des {
+    color: #555555;
+}
+
+.report-date {
+    color: #888888;
+    font-family: 'JetBrains Mono', monospace;    
+}
+
+/* Compose Email Box */
+.compose-email {
+    width: 100%;
+    background-color: #ffffff; 
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.compose-email h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.75rem;
+}
+
+.box2 {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.compose-email form {
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-email label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+.compose-email textarea {
+    background-color: #fdfdfd;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #111111;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace; 
+    min-height: 180px;
+    resize: vertical;          
+    outline: none;
+    transition: all 0.25s ease;
+    margin-bottom: 1.5rem;
+}
+
+.compose-email textarea:focus {
+    border-color: #111111;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+}
+#subject{
+height: 30px;
+border: 1px solid #dcdcdc;
+border-radius: 6px;
+padding-left: 20px;
+margin-bottom: 15px;
+}
+.compose-email button[type="submit"] {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 14px 32px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;    
+}
+
+.compose-email button[type="submit"]:hover {
+    background-color: #222222;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Sandbox Sandbox Frame */
+.frame {
+    width: 100%;
+    height: 300px;
+    background-color: #ffffff; 
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    justify-self: stretch;
+}
+
+/* ==========================================================================
+   7. LIVE DROP CONTROLS
+   ========================================================================== */
+.drop-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; 
+    gap: 3rem;
+    align-items: start;
+}
+
+.drop-display {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timer-box {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.timer-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: #df2c2c; 
+    margin-bottom: 0.5rem;
+}
+
+.countdown-clock {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace; 
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.live-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.live-card:hover {
+    transform: translateY(-4px);
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 320px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.live-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.live-meta {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.live-name {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.live-badge {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 6px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+/* Settings Form Box */
+.drop-update {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.drop-update h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.75rem;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666666;
+}
+
+.update-form input[type="text"],
+.update-form input[type="datetime-local"] {
+    background-color: #fdfdfd;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #111111;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+    font-family: inherit;
+}
+
+.update-form input:focus {
+    border-color: #111111;
+    background-color: #ffffff;
+}
+
+.update-form input[type="file"] {
+    font-size: 0.8rem;
+    color: #666666;
+    margin-top: 0.25rem;
+}
+
+.update-form input[type="file"]::file-selector-button {
+    background-color: #f0f0f0;
+    color: #111111;
+    border: 1px solid #dcdcdc;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-right: 12px;
+}
+
+/* Nested specifications config */
+.specs-box {
+    margin-top: 0.75rem;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1.5rem;
+}
+
+.specs-box h3 {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888888;
+    margin-bottom: 1.25rem;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.25rem;
+}
+
+.save-drop-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.save-drop-btn:hover {
+    background-color: #222222;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   8. COMPREHENSIVE RESPONSIVENESS AND EDGE DEVICES PREVENTIONS
+   ========================================================================== */
+
+/* Tablet Optimization */
+@media (max-width: 900px) {
+    .add-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .right {
+        padding: 1.5rem;
+    }
+    
+    .box2 {
+        grid-template-columns: 1fr;
+    }
+
+    .drop-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Portrait Optimization */
+@media (max-width: 600px) {
+    header {
+        top: 10px;
+    }
+
+    .navigation {
+        width: 100%;
+        border-radius: 16px;
+        height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding-top: 10px;
+    }
+
+    .href {
+        font-size: 0.75rem;
+    }
+
+    .box {
+        height: 32px;
+        padding: 0 12px;
+    }
+
+    main > section {
+        width: 95%;
+        margin-top: 4rem;
+    }
+
+    .upload, .compose-email, .drop-update {
+        padding: 1.5rem;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Deep Ultra-Narrow Prevention (Under 320px screen width layout guard) */
+@media (max-width: 330px) {
+    .navigation {
+        padding: 8px 12px;
+    }
+    
+    .href {
+        font-size: 0.7rem;
+        letter-spacing: 0.02em;
+    }
+
+    .box {
+        display: none; 
+    }
+
+    .product-card {
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .product-image-wrapper {
+        padding: 6px;
+    }
+
+    .shop-btn {
+        font-size: 0.7rem;
+    }
+
+    .countdown-clock {
+        font-size: 1.3rem;
+    }
+}
+/* ==========================================================================
+   6b. EMAIL TARGETING SELECTION CONTROLS
+   ========================================================================== */
+.email-selection {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.email-selection h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.75rem;
+}
+
+.selection-controls {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: end;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Standardized Contrast Action Filters */
+.select-btn {
+    background-color: #ffffff;
+    color: #111111;
+    border: 1px solid #dcdcdc;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 120px;
+}
+
+.select-btn:hover {
+    background-color: #f5f5f5;
+    border-color: #111111;
+}
+
+/* Active Highlight Contrast State */
+.select-btn.active-filter {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.custom-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.custom-input-group label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #666666;
+}
+
+.custom-input-group input[type="text"] {
+    background-color: #fdfdfd;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #111111;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.custom-input-group input[type="text"]:focus {
+    border-color: #111111;
+    background-color: #ffffff;
+}
+
+/* Feedback text container styling */
+#active-target-display {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #666666;
+}
+
+#active-target-display span {
+    color: #000000;
+    font-weight: 800;
+    background-color: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 6px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* --- Media Queries Integration --- */
+@media (max-width: 900px) {
+    .selection-controls {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .email-selection {
+        padding: 1.5rem;
+    }
+    
+    .filter-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .select-btn {
+        width: 100%;
+    }
+}
