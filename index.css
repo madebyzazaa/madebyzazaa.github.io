@@ -22,10 +22,8 @@ background-color: rgba(34, 34, 34, 0.479);
 backdrop-filter: blur(15px);
 width: 96%;
 border-radius: 30px;
-
-
-margin-left: auto;
-margin-right: auto;
+left: 50%;
+transform: translate(-50%, -0%);
 z-index: 100;
 display: flex;
 justify-content: space-between;
@@ -171,5 +169,56 @@ margin-left: auto;
 margin-right: auto;
 margin-top: 30px;
 display: block;
-margin-bottom: 20px;
+margin-bottom: 30px;
+}
+.form{
+width: 95%;
+height: 210px;
+border-radius: 20px;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(128, 128, 128, 0.062);
+background-color: rgba(39, 39, 39, 0.548);
+position: fixed;
+bottom: 10px;
+display: none;
+flex-direction: column;
+align-items: center;
+left: 50%;
+transform: translate(-50%, -0%);
+}
+.top{
+height: 30px;
+display: flex;
+justify-content: space-between;
+
+width: 85%;
+}
+.input{
+width: 87%;
+height: 40px;
+border-radius: 30px;
+border: 0;
+background-color: rgba(255, 255, 255, 0.877);
+margin-top: 50px;
+padding-left: 10px;
+font-size: 18px;
+
+}
+.save{
+background-color: transparent;
+border: 0;
+font-size: 20px;
+color: white;
+}
+.sync{
+background-color: transparent;
+border: 0;
+font-size: 20px;
+color: rgb(67, 124, 248);
+}
+.btns{
+width: 60%;
+justify-content: space-between;
+display: flex;
+margin-top: 30px;
 }
