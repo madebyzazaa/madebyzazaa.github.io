@@ -7,7 +7,7 @@ margin-left: auto;
 margin-right: auto;
 padding-bottom: 40px;
 padding-top: 10px;
-background-color: rgb(15, 15, 17);
+background-color: #0f0f11;
 }
 body{
 font-family: "Inter", sans-serif;
@@ -101,6 +101,8 @@ border-radius: 10px;
 margin-left: 10px;
 width: 85%;
 color: rgb(238, 238, 238);
+
+
 }
 .record-value{margin-left: 10px;}
 .sec2{
@@ -219,4 +221,23 @@ width: 60%;
 justify-content: space-between;
 display: flex;
 margin-top: 30px;
+}
+.month{margin: 0;
+color: #8E8E93 ;
+font-size: 14px;
+margin-top: 5px;
+margin-left: 2px;
+}
+.tag{
+position: absolute;
+font-size: 11px;
+background-color: rgb(255, 255, 255);
+color: black;
+padding: 2px;
+box-shadow: 1px 1px 1px rgba(172, 171, 171, 0.479);
+margin-left: 20px;
+margin-top: 20px;
+background-origin: 1px;
+border-radius: 2px;
+display: none;
 }
