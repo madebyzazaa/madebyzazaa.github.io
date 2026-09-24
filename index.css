@@ -241,3 +241,13 @@ background-origin: 1px;
 border-radius: 2px;
 display: none;
 }
+.select{
+height: 20px;
+margin-top: 16px;
+border: 0;
+ border-radius: 5px;
+font-size: 12px;
+background-color: rgb(58, 58, 58);
+color: rgb(168, 168, 168);
+width: 60px;
+}
