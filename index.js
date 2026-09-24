@@ -24,10 +24,14 @@ if(!data){data={
   max_streak: 0,
   saved_month: '04',
   saved_year: '2025',
-  last_upload: null
+  last_upload: null,
+  injury_start: null,
+  injury_stop: null
 }}
 let monthdata = JSON.parse(localStorage.getItem('monthdata'))
 if(!monthdata){monthdata={}}
+let injury = JSON.parse(localStorage.getItem('injurydata'))
+if(!injury){injury={}}
 
 let AttachedDate = 0
 const input = document.getElementById('input')
@@ -38,6 +42,7 @@ const monthno = date.getMonth()
 const month = date.toLocaleString('default', {month: 'short'})
 const day = date.getDate()
 const daysInCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); 
+let stat = 'report'
 
 document.getElementById('add').addEventListener("click", (e)=>{document.getElementById('form').style.display='flex'; 
 e.stopPropagation(); AttachedDate=day
@@ -46,7 +51,7 @@ document.addEventListener("click", ()=>{document.getElementById('form').style.di
 document.getElementById('form').addEventListener("click", (e)=>{e.stopPropagation()})
 
 console.log(`${month} ${monthno} ${day} ${daysInCurrentMonth} ${date}`)
-console.log(data)
+console.log(injury)
 
 document.getElementById('username').addEventListener('click', ()=>{
 const newname = window.prompt('new username')
@@ -63,6 +68,7 @@ const streak = data.streak
 const streakdate = new Date(streak.date)
 const differenceInMs = date-streakdate
 const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+console.log(differenceInDays)
 if(differenceInDays>1){document.getElementById('streak-txt').innerHTML=`streak: 0days 🔥`}
 document.getElementById('streak-value').innerHTML=`${data.max_streak} days`
 const value = Object.values(monthdata)
@@ -81,7 +87,7 @@ const box = document.createElement('div')
 const tag = document.createElement('div')
 box.className = 'box'
 tag.className = 'tag'
-tag.innerHTML='000'
+tag.innerHTML='00'
 box.append(tag)
 box.addEventListener('click', ()=>{
 tag.style.display='block'
@@ -91,9 +97,9 @@ tag.style.display='none'
 })
 
 box.addEventListener('dblclick', ()=>{
-if(index<=day && index>=day-5){
-form.style.display='flex'; AttachedDate=index; 
-input.placeholder=`for ${AttachedDate+1}` }
+if(index<day && index>=day-5){
+form.style.display='flex'; AttachedDate=index+1; 
+input.placeholder=`for ${AttachedDate}` }
 })
 document.getElementsByClassName('grid').item(0).append(box)
 }
@@ -101,13 +107,48 @@ document.getElementsByClassName('grid').item(0).append(box)
 //contribution tracking
 function track(){
 const entry = Object.entries(monthdata)
+const injuryentry = Object.entries(injury)
+
+injuryentry.forEach(([key, value])=>{
+const start = new Date(key)
+const end = new Date(value)
+const differenceInMs = end-start
+const differenceInDays = differenceInMs / (1000 * 60 * 60 * 24);
+const month = start.getMonth()
+const year = start.getFullYear()
+const endmonth = end.getMonth()
+const endyear = end.getFullYear()
+if(month==monthno && year==date.getFullYear()){
+for (let index = 0; index < differenceInDays; index++) {
+const convert = (start.getDate())+index
+
+if(convert<=day){
+document.getElementsByClassName('box').item(convert-1).style.backgroundColor=`rgb(134, 28, 28)`
+}
+}}
+else if(endmonth==monthno && endyear==date.getFullYear()){
+for (let index = 0; index < end.getDate(); index++) {
+const convert = (end.getDate())-index
+
+if(convert<=day){
+document.getElementsByClassName('box').item(convert-1).style.backgroundColor=`rgb(134, 28, 28)`
+}
+}
+}
+else{
+delete injury[key];
+}
+
+localStorage.setItem('injurydata', JSON.stringify(injury))
+})
+
 
 entry.forEach(([key, value])=>{
 let color = value*0.007
 if(color<0.7){color=0.7}
 else if(color>1){color=1}
-document.getElementsByClassName('box').item(key).style.backgroundColor=`rgb(240, 136, 17, ${color})`
-document.getElementsByClassName('tag').item(key).innerHTML=value
+document.getElementsByClassName('box').item(key-1).style.backgroundColor=`rgb(240, 136, 17, ${color})`
+document.getElementsByClassName('tag').item(key-1).innerHTML=value
 })  
 
 const value = Object.values(monthdata)
@@ -128,7 +169,7 @@ form.style.display='none'
 localStorage.setItem('monthdata', JSON.stringify(monthdata))
 track()
 
-if(AttachedDate+1==day){
+if(AttachedDate==day){
 const streak = data.streak
 const streakdate = new Date(streak.date)
 const differenceInMs = date-streakdate
@@ -147,8 +188,23 @@ document.getElementById('streak-value').innerHTML=`${data.max_streak} days`
 }
 }
 }
-document.getElementById('save').addEventListener('click', CreateRecord) 
+function InjuryReport(){
+if(AttachedDate==day){
+const start = date.toLocaleString('en-US')
+const newdate = new Date
+const end = newdate.setDate(newdate.getDate() + Number(input.value))
+const enddate = new Date(end)
+injury[start] = enddate.toLocaleString('en-US')
+console.log(injury)
+localStorage.setItem('injurydata', JSON.stringify(injury))
+}
+}
+document.getElementById('save').addEventListener('click', ()=>{
+  if(stat=='report'){CreateRecord()}
+  else{InjuryReport()}
+}) 
 
+//reset data
 function reset(){
 // 1. Get the current date info
 const now = new Date();
@@ -265,4 +321,10 @@ function exportTasksToCalendar(taskobj) {
     URL.revokeObjectURL(url);
 }
 
-
+//injury record adds a date entry to data for start date and end date calculates date range and applies color and tag
+document.getElementById('select').addEventListener('input', ()=>{
+stat=document.getElementById('select').value
+if(stat=='injury'){input.placeholder='duration'}
+else{input.placeholder=`for ${day}`}
+console.log(stat)
+})
