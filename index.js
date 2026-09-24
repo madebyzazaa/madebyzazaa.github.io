@@ -97,7 +97,7 @@ tag.style.display='none'
 })
 
 box.addEventListener('dblclick', ()=>{
-if(index<day && index>=day-5){
+if(index<day && index>=day-3){
 form.style.display='flex'; AttachedDate=index+1; 
 input.placeholder=`for ${AttachedDate}` }
 })
@@ -123,7 +123,7 @@ for (let index = 0; index < differenceInDays; index++) {
 const convert = (start.getDate())+index
 
 if(convert<=day){
-document.getElementsByClassName('box').item(convert-1).style.backgroundColor=`rgb(134, 28, 28)`
+document.getElementsByClassName('box').item(convert-1).style.backgroundColor='#2F3640'
 }
 }}
 else if(endmonth==monthno && endyear==date.getFullYear()){
@@ -131,7 +131,7 @@ for (let index = 0; index < end.getDate(); index++) {
 const convert = (end.getDate())-index
 
 if(convert<=day){
-document.getElementsByClassName('box').item(convert-1).style.backgroundColor=`rgb(134, 28, 28)`
+document.getElementsByClassName('box').item(convert-1).style.backgroundColor='#2F3640'
 }
 }
 }
