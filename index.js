@@ -176,15 +176,93 @@ location.reload()}
 }
 reset()
 
+
 document.getElementById('sync').addEventListener('click', ()=>{
 if(data.last_upload){
-let entry = Object.entries(monthdata)
-const taskarray = []
-const point = entry.indexOf(data.last_upload)
-entry = entry.slice(point, )
-for (let index = 0; index < entry.length; index++) {
-
-}
-}
+if(data.last_upload==day){window.alert('already synced'); return}
+let key = Object.keys(monthdata)
+let task= {}
+const point = key.indexOf(data.last_upload)
+key = key.slice(point+1, )
+key.forEach((key)=>{
+task[key] = monthdata[key]
 })
+exportTasksToCalendar(task)
+data.last_upload=String(day)
+localStorage.setItem('storeddata', JSON.stringify(data))
+}
+else{
+task=monthdata
+console.log(task)
+exportTasksToCalendar(task)
+data.last_upload=String(day)
+localStorage.setItem('storeddata', JSON.stringify(data))
+}
+
+window.alert('synced check your downloads')
+form.style.display='none'
+})
+
+function exportTasksToCalendar(taskobj) {
+    // 2. Initialize the core calendar structure
+    const icsLines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Your Web App//Custom Task Object Exporter v1.0//EN",
+        "CALSCALE:GREGORIAN"
+    ];
+
+    // Helper function to format JavaScript dates into clean UTC strings (YYYYMMDDTHHmmSSZ)
+    const formatICS = (date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.') + 'Z';
+    };
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth(); // 0 = January, 11 = December
+
+    // 3. Loop through the object keys (the days)
+    Object.keys(taskobj).forEach((dayKey, index) => {
+        const taskTitle = String(taskobj[dayKey]); // e.g., "100", "200"
+        const dayNumber = parseInt(dayKey, 10);
+
+        // Create a specific date object for that day at 09:00 AM local time
+        const startTime = new Date(currentYear, currentMonth, dayNumber, 9, 0, 0);
+        // Set the task to end 1 hour later at 10:00 AM
+        const endTime = new Date(currentYear, currentMonth, dayNumber, 10, 0, 0);
+
+        // Generate a unique ID for every separate event block
+        const uniqueId = `task-${currentYear}-${currentMonth}-${dayNumber}-${index}@yourwebapp.com`;
+
+        // Append this specific event metadata to our file layout
+        icsLines.push("BEGIN:VEVENT");
+        icsLines.push(`UID:${uniqueId}`);
+        icsLines.push(`DTSTAMP:${formatICS(now)}`);
+        icsLines.push(`DTSTART:${formatICS(startTime)}`);
+        icsLines.push(`DTEND:${formatICS(endTime)}`);
+        icsLines.push(`SUMMARY:Task ${taskTitle}`); // Results in "Task 100", "Task 200", etc.
+        icsLines.push(`DESCRIPTION:Automated calendar import for value ${taskTitle} assigned to day ${dayNumber}.`);
+        icsLines.push("END:VEVENT");
+    });
+
+    // 4. Close the calendar payload framework
+    icsLines.push("END:VCALENDAR");
+    const icsContent = icsLines.join("\r\n");
+
+    // 5. Convert text buffer into a processing download blob
+    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    // 6. Programmatically trigger a direct browser engine download file layout
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "monthly_tasks.ics");
+    document.body.appendChild(link);
+    
+    link.click(); // Spawns the local device native storage/calendar open action prompt
+    
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
 
